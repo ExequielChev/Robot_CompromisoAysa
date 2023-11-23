@@ -12,7 +12,7 @@ Library    String
 ${PRIMER_NAME}=
 ${SEGUNDO_NAME}=
 ${excel_file} =    C:\\Users\\zcheveste\\Documents\\Robocop_project\\Robot_CompromisoAysa\\Excels\\MATRIZ CENTRAL.xlsx
-${excel_file2} =   C:\\Users\\zcheveste\\Documents\\Robocop_project\\Robot_CompromisoAysa\\Excels\\facturas_aysa.xlsx
+${excel_file2} =   C:\\Users\\zcheveste\\Documents\\Robocop_project\\OCR\\facturas\\Facturas de Aysa - Bot\\facturas_aysa.xlsx
 ${sheet_name} =    SERVICIOS_PUBLICOS
 ${sheet_name2} =    Facturas Aysa
 ${contador}    0
@@ -283,7 +283,7 @@ Carga de datos
                 #Volver a posicionarse nuevamente en la pestaña de datos para continuar con la descarga tipo PDF de cada compromiso
                 Send Keys    keys={RIGHT}
                 Sleep    0.5s
-                Send Keys    keys={TAB 2}
+                Send Keys    keys={TAB 2}        
                 Sleep    1s
                 Send Keys    keys={LEFT}
                 Sleep    1s 
