@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20231123 11:00:07.830" rpa="true" schemaversion="4">
+<suite id="s1" name="Tasks" source="c:\Users\zcheveste\Documents\Robocop_project\Robot_CompromisoAysa\tasks.robot">
+<test id="s1-t1" name="Open Major desktop application and play a app" line="25">
+<kw name="Creacion de Carpetas">
+<kw name="Get Current Date" library="DateTime">
+<var>${fecha_hoy}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20231123 11:00:09.143" level="INFO">${fecha_hoy} = 2023-11-23 11:00:09.143</msg>
+<status status="PASS" starttime="20231123 11:00:09.143" endtime="20231123 11:00:09.143"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${año}</var>
+<arg>${fecha_hoy}</arg>
+<arg>%Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20231123 11:00:09.158" level="INFO">${año} = 2023</msg>
+<status status="PASS" starttime="20231123 11:00:09.143" endtime="20231123 11:00:09.158"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${mes}</var>
+<arg>${fecha_hoy}</arg>
+<arg>%m</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20231123 11:00:09.158" level="INFO">${mes} = 11</msg>
+<status status="PASS" starttime="20231123 11:00:09.158" endtime="20231123 11:00:09.158"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${día}</var>
+<arg>${fecha_hoy}</arg>
+<arg>%d</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20231123 11:00:09.158" level="INFO">${día} = 23</msg>
+<status status="PASS" starttime="20231123 11:00:09.158" endtime="20231123 11:00:09.158"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ruta_año}</var>
+<arg>${ruta_base}\\${año}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231123 11:00:09.158" level="INFO">${ruta_año} = C:\Users\zcheveste\Documents\2023</msg>
+<status status="PASS" starttime="20231123 11:00:09.158" endtime="20231123 11:00:09.158"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ruta_mes}</var>
+<arg>${ruta_año}\\${mes}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231123 11:00:09.158" level="INFO">${ruta_mes} = C:\Users\zcheveste\Documents\2023\11</msg>
+<status status="PASS" starttime="20231123 11:00:09.158" endtime="20231123 11:00:09.158"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ruta_dia}</var>
+<arg>${ruta_mes}\\${día}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231123 11:00:09.174" level="INFO">${ruta_dia} = C:\Users\zcheveste\Documents\2023\11\23</msg>
+<status status="PASS" starttime="20231123 11:00:09.158" endtime="20231123 11:00:09.174"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ruta_carpeta}</var>
+<arg>${ruta_dia}\\${nombre_carpeta}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231123 11:00:09.174" level="INFO">${ruta_carpeta} = C:\Users\zcheveste\Documents\2023\11\23\Compromisos_pdfAysa</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${existe_carpeta_año}</var>
+<arg>Directory Should Exist</arg>
+<arg>${ruta_año}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${ruta_año}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20231123 11:00:09.174" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\zcheveste\Documents\2023"&gt;C:\Users\zcheveste\Documents\2023&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<msg timestamp="20231123 11:00:09.174" level="INFO">${existe_carpeta_año} = True</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>not ${existe_carpeta_año}</arg>
+<arg>Create Directory</arg>
+<arg>${ruta_año}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${existe_carpeta_mes}</var>
+<arg>Directory Should Exist</arg>
+<arg>${ruta_mes}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${ruta_mes}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20231123 11:00:09.174" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\zcheveste\Documents\2023\11"&gt;C:\Users\zcheveste\Documents\2023\11&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<msg timestamp="20231123 11:00:09.174" level="INFO">${existe_carpeta_mes} = True</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>not ${existe_carpeta_mes}</arg>
+<arg>Create Directory</arg>
+<arg>${ruta_mes}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.174"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${existe_carpeta_día}</var>
+<arg>Directory Should Exist</arg>
+<arg>${ruta_dia}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${ruta_dia}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20231123 11:00:09.174" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\zcheveste\Documents\2023\11\23"&gt;C:\Users\zcheveste\Documents\2023\11\23&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.190"/>
+</kw>
+<msg timestamp="20231123 11:00:09.190" level="INFO">${existe_carpeta_día} = True</msg>
+<status status="PASS" starttime="20231123 11:00:09.174" endtime="20231123 11:00:09.190"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>not ${existe_carpeta_día}</arg>
+<arg>Create Directory</arg>
+<arg>${ruta_dia}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20231123 11:00:09.190" endtime="20231123 11:00:09.190"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${existe_carpeta_especifica}</var>
+<arg>Directory Should Exist</arg>
+<arg>${ruta_carpeta}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>${ruta_carpeta}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20231123 11:00:09.190" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\zcheveste\Documents\2023\11\23\Compromisos_pdfAysa"&gt;C:\Users\zcheveste\Documents\2023\11\23\Compromisos_pdfAysa&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20231123 11:00:09.190" endtime="20231123 11:00:09.190"/>
+</kw>
+<msg timestamp="20231123 11:00:09.190" level="INFO">${existe_carpeta_especifica} = True</msg>
+<status status="PASS" starttime="20231123 11:00:09.190" endtime="20231123 11:00:09.190"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>not ${existe_carpeta_especifica}</arg>
+<arg>Create Directory</arg>
+<arg>${ruta_carpeta}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20231123 11:00:09.190" endtime="20231123 11:00:09.190"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:09.143" endtime="20231123 11:00:09.190"/>
+</kw>
+<kw name="Ir a incio de usuario">
+<kw name="Click" library="RPA.Windows">
+<arg>name:Transacciones</arg>
+<arg>timeout=60</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20231123 11:00:09.205" level="INFO">Locator timeout set to: 60.000000</msg>
+<msg timestamp="20231123 11:00:09.205" level="INFO">Getting element with locator: name:Transacciones</msg>
+<msg timestamp="20231123 11:00:09.455" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x00000172F559FD30&gt;, locator=None, name='Escritorio 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1366, top=0, bottom=768, width=1366, height=768, xcenter=683, ycenter=384)</msg>
+<msg timestamp="20231123 11:00:09.455" level="INFO">Locator 'name:Transacciones' produced matcher: MatchObject(locators=[('Name', 'Transacciones', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20231123 11:00:09.752" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.MenuItemControl object at 0x00000172F559F8E0&gt;, locator='name:Transacciones', name='Transacciones', automation_id='', control_type='MenuItemControl', class_name='', left=154, right=241, top=26, bottom=45, width=87, height=19, xcenter=197, ycenter=35)</msg>
+<status status="PASS" starttime="20231123 11:00:09.190" endtime="20231123 11:00:10.346"/>
+</kw>
+<kw name="Click" library="RPA.Windows">
+<arg>name:Compromiso</arg>
+<arg>timeout=30</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20231123 11:00:10.346" level="INFO">Locator timeout set to: 30.000000</msg>
+<msg timestamp="20231123 11:00:10.346" level="INFO">Getting element with locator: name:Compromiso</msg>
+<msg timestamp="20231123 11:00:10.346" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x00000172F559F820&gt;, locator=None, name='Escritorio 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1366, top=0, bottom=768, width=1366, height=768, xcenter=683, ycenter=384)</msg>
+<msg timestamp="20231123 11:00:10.346" level="INFO">Locator 'name:Compromiso' produced matcher: MatchObject(locators=[('Name', 'Compromiso', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20231123 11:00:10.393" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.MenuItemControl object at 0x00000172F559F5B0&gt;, locator='name:Compromiso', name='Compromiso', automation_id='', control_type='MenuItemControl', class_name='', left=157, right=391, top=92, bottom=114, width=234, height=22, xcenter=274, ycenter=103)</msg>
+<status status="PASS" starttime="20231123 11:00:10.346" endtime="20231123 11:00:11.002"/>
+</kw>
+<kw name="Click" library="RPA.Windows">
+<arg>id:89</arg>
+<arg>timeout=30</arg>
+<tag>action</tag>
+<tag>mouse</tag>
+<doc>Mouse click on element matching given locator.</doc>
+<msg timestamp="20231123 11:00:11.002" level="INFO">Locator timeout set to: 30.000000</msg>
+<msg timestamp="20231123 11:00:11.002" level="INFO">Getting element with locator: id:89</msg>
+<msg timestamp="20231123 11:00:11.002" level="INFO">Resulted root element: WindowsElement(item=&lt;uiautomation.uiautomation.PaneControl object at 0x00000172F559F580&gt;, locator=None, name='Escritorio 1', automation_id='', control_type='PaneControl', class_name='#32769', left=0, right=1366, top=0, bottom=768, width=1366, height=768, xcenter=683, ycenter=384)</msg>
+<msg timestamp="20231123 11:00:11.002" level="INFO">Locator 'id:89' produced matcher: MatchObject(locators=[('AutomationId', '89', 0)], _classes=set(), max_level=0)</msg>
+<msg timestamp="20231123 11:00:11.049" level="INFO">Returning element: WindowsElement(item=&lt;uiautomation.uiautomation.MenuItemControl object at 0x00000172F559F430&gt;, locator='id:89', name='Sin Orden de Compra', automation_id='89', control_type='MenuItemControl', class_name='', left=391, right=663, top=114, bottom=136, width=272, height=22, xcenter=527, ycenter=125)</msg>
+<status status="PASS" starttime="20231123 11:00:11.002" endtime="20231123 11:00:11.643"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231123 11:00:17.626" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231123 11:00:12.611" endtime="20231123 11:00:17.626"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:09.190" endtime="20231123 11:00:17.626"/>
+</kw>
+<kw name="Carga de datos">
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${excel_file}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20231123 11:00:18.233" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000172F559F070&gt;</msg>
+<status status="PASS" starttime="20231123 11:00:17.626" endtime="20231123 11:00:18.235"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data_as_table}</var>
+<arg>${sheet_name}</arg>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20231123 11:00:18.435" level="INFO">Created table: Table(columns=['SERVICIO', 'NUMERO_DE_CTA', 'DIRECCION', 'TIPO', 'PROVE_TIPO', 'NUMERO', 'JURISDICCION', 'EST.PROGRAMATICA', 'FF', 'OBJETO_DE_GASTO', 'OFICI', 'IMPORTE', 'CANTIDAD', 'TOTAL', 'SOLIC.DE.FC.DIGITAL.'], rows=458)</msg>
+<msg timestamp="20231123 11:00:18.435" level="INFO">${data_as_table} = Table(columns=['SERVICIO', 'NUMERO_DE_CTA', 'DIRECCION', 'TIPO', 'PROVE_TIPO', 'NUMERO', 'JURISDICCION', 'EST.PROGRAMATICA', 'FF', 'OBJETO_DE_GASTO', 'OFICI', 'IMPORTE', 'CANTIDAD', 'TOTAL', 'SOLIC.DE...</msg>
+<status status="PASS" starttime="20231123 11:00:18.235" endtime="20231123 11:00:18.435"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{cuenta}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231123 11:00:18.435" level="INFO">@{cuenta} = [ ]</msg>
+<status status="PASS" starttime="20231123 11:00:18.435" endtime="20231123 11:00:18.435"/>
+</kw>
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>${excel_file2}</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20231123 11:00:18.435" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000172F559F070&gt;</msg>
+<msg timestamp="20231123 11:00:18.518" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x00000172F559F070&gt;</msg>
+<status status="PASS" starttime="20231123 11:00:18.435" endtime="20231123 11:00:18.518"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${data_as_table2}</var>
+<arg>${sheet_name2}</arg>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20231123 11:00:18.535" level="INFO">Created table: Table(columns=['N° de Cuenta', 'Punto de Venta', 'N° de Factura', 'Total a Pagar', 'Fecha de Vencimiento', 'TIPOFB', 'ORDEN', 'ESTADO'], rows=59)</msg>
+<msg timestamp="20231123 11:00:18.535" level="INFO">${data_as_table2} = Table(columns=['N° de Cuenta', 'Punto de Venta', 'N° de Factura', 'Total a Pagar', 'Fecha de Vencimiento', 'TIPOFB', 'ORDEN', 'ESTADO'], rows=59)</msg>
+<status status="PASS" starttime="20231123 11:00:18.518" endtime="20231123 11:00:18.535"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{n_cuenta2}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231123 11:00:18.535" level="INFO">@{n_cuenta2} = [ ]</msg>
+<status status="PASS" starttime="20231123 11:00:18.535" endtime="20231123 11:00:18.535"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>2</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231123 11:00:18.535" level="INFO">${contadorROW2} = 2</msg>
+<status status="PASS" starttime="20231123 11:00:18.535" endtime="20231123 11:00:18.535"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>1</arg>
+<arg>F</arg>
+<arg>TIPOFB</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.535" endtime="20231123 11:00:18.535"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>1</arg>
+<arg>G</arg>
+<arg>ORDEN</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.535" endtime="20231123 11:00:18.535"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>1</arg>
+<arg>H</arg>
+<arg>ESTADO</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.535" endtime="20231123 11:00:18.549"/>
+</kw>
+<for flavor="IN">
+<var>${row2}</var>
+<value>@{data_as_table2}</value>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003523', 'Punto de Venta': '0106', 'N° de Factura': 504448953, 'Total a Pagar': '18.056,69', 'Fecha de Vencimiento': '03/10/2023', 'TIPOFB': '45', 'ORDEN': '2', 'ESTADO': 'OK'}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.552" endtime="20231123 11:00:18.552"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.552" endtime="20231123 11:00:18.552"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.552" level="INFO">${contadorROW2} = 3</msg>
+<status status="PASS" starttime="20231123 11:00:18.552" endtime="20231123 11:00:18.552"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.552" endtime="20231123 11:00:18.552"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4005341', 'Punto de Venta': '0109', 'N° de Factura': 55632791, 'Total a Pagar': '38.788,13', 'Fecha de Vencimiento': '25/09/2023', 'TIPOFB': '45', 'ORDEN': 3, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.569" endtime="20231123 11:00:18.569"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.569" endtime="20231123 11:00:18.569"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.569" level="INFO">${contadorROW2} = 4</msg>
+<status status="PASS" starttime="20231123 11:00:18.569" endtime="20231123 11:00:18.569"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.565" endtime="20231123 11:00:18.569"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4008813', 'Punto de Venta': '0109', 'N° de Factura': 55632809, 'Total a Pagar': '6.970,54', 'Fecha de Vencimiento': '25/09/2023', 'TIPOFB': '45', 'ORDEN': 4, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.569" endtime="20231123 11:00:18.569"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.569" endtime="20231123 11:00:18.569"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.585" level="INFO">${contadorROW2} = 5</msg>
+<status status="PASS" starttime="20231123 11:00:18.582" endtime="20231123 11:00:18.585"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.569" endtime="20231123 11:00:18.585"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4032121', 'Punto de Venta': '0109', 'N° de Factura': 55632888, 'Total a Pagar': '7.241,34', 'Fecha de Vencimiento': '25/09/2023', 'TIPOFB': '45', 'ORDEN': 5, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.585"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.585"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.585" level="INFO">${contadorROW2} = 6</msg>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.585"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.585"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4082638', 'Punto de Venta': '0109', 'N° de Factura': 55747392, 'Total a Pagar': '6.888,39', 'Fecha de Vencimiento': '25/09/2023', 'TIPOFB': '45', 'ORDEN': 6, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.585"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.601"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.602" level="INFO">${contadorROW2} = 7</msg>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.602"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.585" endtime="20231123 11:00:18.602"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4004146', 'Punto de Venta': '0109', 'N° de Factura': 58226103, 'Total a Pagar': '4.736,79', 'Fecha de Vencimiento': '05/10/2023', 'TIPOFB': '45', 'ORDEN': 7, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.602"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.602"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.602" level="INFO">${contadorROW2} = 8</msg>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.602"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.602"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4004183', 'Punto de Venta': '0109', 'N° de Factura': 58226106, 'Total a Pagar': '8.552,09', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 8, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.619"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.619" endtime="20231123 11:00:18.619"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.619" level="INFO">${contadorROW2} = 9</msg>
+<status status="PASS" starttime="20231123 11:00:18.619" endtime="20231123 11:00:18.619"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.602" endtime="20231123 11:00:18.619"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4004490', 'Punto de Venta': '0109', 'N° de Factura': 58226117, 'Total a Pagar': '4.729,59', 'Fecha de Vencimiento': '02/10/2023', 'TIPOFB': '45', 'ORDEN': 9, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.619" endtime="20231123 11:00:18.619"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.619" endtime="20231123 11:00:18.619"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.633" level="INFO">${contadorROW2} = 10</msg>
+<status status="PASS" starttime="20231123 11:00:18.619" endtime="20231123 11:00:18.635"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.619" endtime="20231123 11:00:18.635"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4006534', 'Punto de Venta': '0109', 'N° de Factura': 58226136, 'Total a Pagar': '9.418,04', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 10, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.635" endtime="20231123 11:00:18.635"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.635" endtime="20231123 11:00:18.635"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.635" level="INFO">${contadorROW2} = 11</msg>
+<status status="PASS" starttime="20231123 11:00:18.635" endtime="20231123 11:00:18.635"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.635" endtime="20231123 11:00:18.635"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4030100', 'Punto de Venta': '0109', 'N° de Factura': '88226160', 'Total a Pagar': '12.200,80', 'Fecha de Vencimiento': '02/10/2023', 'TIPOFB': '45', 'ORDEN': 11, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.649" endtime="20231123 11:00:18.652"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.652" endtime="20231123 11:00:18.652"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.652" level="INFO">${contadorROW2} = 12</msg>
+<status status="PASS" starttime="20231123 11:00:18.652" endtime="20231123 11:00:18.652"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.635" endtime="20231123 11:00:18.652"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4030708', 'Punto de Venta': '0109', 'N° de Factura': '88226164', 'Total a Pagar': '8.005,51', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 12, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.652" endtime="20231123 11:00:18.652"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.652" endtime="20231123 11:00:18.652"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.668" level="INFO">${contadorROW2} = 13</msg>
+<status status="PASS" starttime="20231123 11:00:18.665" endtime="20231123 11:00:18.668"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.652" endtime="20231123 11:00:18.668"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4030742', 'Punto de Venta': '0109', 'N° de Factura': '88226167', 'Total a Pagar': '8.005,51', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 13, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.668"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.668"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.668" level="INFO">${contadorROW2} = 14</msg>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.668"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.668"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4031397', 'Punto de Venta': '0109', 'N° de Factura': '88226184', 'Total a Pagar': '4.512,18', 'Fecha de Vencimiento': '05/10/2023', 'TIPOFB': '45', 'ORDEN': 14, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.668"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.685"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.685" level="INFO">${contadorROW2} = 15</msg>
+<status status="PASS" starttime="20231123 11:00:18.685" endtime="20231123 11:00:18.685"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.668" endtime="20231123 11:00:18.685"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4031412', 'Punto de Venta': '0109', 'N° de Factura': '88226189', 'Total a Pagar': '89.613,31', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 15, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.685" endtime="20231123 11:00:18.685"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.702" endtime="20231123 11:00:18.702"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.702" level="INFO">${contadorROW2} = 16</msg>
+<status status="PASS" starttime="20231123 11:00:18.702" endtime="20231123 11:00:18.702"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.685" endtime="20231123 11:00:18.702"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4031901', 'Punto de Venta': '0109', 'N° de Factura': '88226197', 'Total a Pagar': '1.843,23', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 16, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.719" endtime="20231123 11:00:18.719"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.719" endtime="20231123 11:00:18.719"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.719" level="INFO">${contadorROW2} = 17</msg>
+<status status="PASS" starttime="20231123 11:00:18.719" endtime="20231123 11:00:18.719"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.716" endtime="20231123 11:00:18.719"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4031965', 'Punto de Venta': '0109', 'N° de Factura': '88226198', 'Total a Pagar': '3.243,75', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 17, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.719" endtime="20231123 11:00:18.735"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.735" endtime="20231123 11:00:18.735"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.735" level="INFO">${contadorROW2} = 18</msg>
+<status status="PASS" starttime="20231123 11:00:18.735" endtime="20231123 11:00:18.735"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.719" endtime="20231123 11:00:18.735"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4032078', 'Punto de Venta': '0109', 'N° de Factura': '88226199', 'Total a Pagar': '1.843,23', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 18, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.735" endtime="20231123 11:00:18.735"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.735" endtime="20231123 11:00:18.735"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.735" level="INFO">${contadorROW2} = 19</msg>
+<status status="PASS" starttime="20231123 11:00:18.735" endtime="20231123 11:00:18.749"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.735" endtime="20231123 11:00:18.751"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4032122', 'Punto de Venta': '0109', 'N° de Factura': '88226201', 'Total a Pagar': '3.243,75', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 19, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.751"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.751"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.751" level="INFO">${contadorROW2} = 20</msg>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.751"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.751"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4032123', 'Punto de Venta': '0109', 'N° de Factura': '88226202', 'Total a Pagar': '3.243,75', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 20, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.751"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.767"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.768" level="INFO">${contadorROW2} = 21</msg>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.768"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.751" endtime="20231123 11:00:18.768"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4033237', 'Punto de Venta': '0109', 'N° de Factura': '88226210', 'Total a Pagar': '4.002,76', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 21, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.768"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.768"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.768" level="INFO">${contadorROW2} = 22</msg>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.768"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.768"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4075217', 'Punto de Venta': '0109', 'N° de Factura': '88226211', 'Total a Pagar': '8.527,08', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 22, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.783"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.785"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.785" level="INFO">${contadorROW2} = 23</msg>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.785"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.768" endtime="20231123 11:00:18.785"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003958', 'Punto de Venta': '0109', 'N° de Factura': '88257192', 'Total a Pagar': '5.029,24', 'Fecha de Vencimiento': '06/10/2023', 'TIPOFB': '45', 'ORDEN': 23, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.785"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.785"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.785" level="INFO">${contadorROW2} = 24</msg>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.785"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.785"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003803', 'Punto de Venta': '0109', 'N° de Factura': '88260074', 'Total a Pagar': '5.966,72', 'Fecha de Vencimiento': '03/10/2023', 'TIPOFB': '45', 'ORDEN': 24, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.799" endtime="20231123 11:00:18.802"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.802" endtime="20231123 11:00:18.802"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.802" level="INFO">${contadorROW2} = 25</msg>
+<status status="PASS" starttime="20231123 11:00:18.802" endtime="20231123 11:00:18.802"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.785" endtime="20231123 11:00:18.802"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4075746', 'Punto de Venta': '0109', 'N° de Factura': '88264925', 'Total a Pagar': '18.269,29', 'Fecha de Vencimiento': '05/10/2023', 'TIPOFB': '45', 'ORDEN': 25, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.802" endtime="20231123 11:00:18.802"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.802" endtime="20231123 11:00:18.802"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.802" level="INFO">${contadorROW2} = 26</msg>
+<status status="PASS" starttime="20231123 11:00:18.802" endtime="20231123 11:00:18.802"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.802" endtime="20231123 11:00:18.802"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003711', 'Punto de Venta': '0109', 'N° de Factura': '88271610', 'Total a Pagar': '1.353,97', 'Fecha de Vencimiento': '02/10/2023', 'TIPOFB': '45', 'ORDEN': 26, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.816" endtime="20231123 11:00:18.817"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.817"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.817" level="INFO">${contadorROW2} = 27</msg>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.817"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.815" endtime="20231123 11:00:18.817"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003722', 'Punto de Venta': '0109', 'N° de Factura': '88271618', 'Total a Pagar': '2.707,93', 'Fecha de Vencimiento': '03/10/2023', 'TIPOFB': '45', 'ORDEN': 27, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.817"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.817"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.817" level="INFO">${contadorROW2} = 28</msg>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.817"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.817"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4083916', 'Punto de Venta': '0109', 'N° de Factura': '88276863', 'Total a Pagar': '9.223,99', 'Fecha de Vencimiento': '05/10/2023', 'TIPOFB': '45', 'ORDEN': 28, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.832" endtime="20231123 11:00:18.834"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.834"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.834" level="INFO">${contadorROW2} = 29</msg>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.834"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.817" endtime="20231123 11:00:18.834"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003555', 'Punto de Venta': '0109', 'N° de Factura': '88282257', 'Total a Pagar': '24.736,21', 'Fecha de Vencimiento': '04/10/2023', 'TIPOFB': '45', 'ORDEN': 29, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.834"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.834"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.834" level="INFO">${contadorROW2} = 30</msg>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.834"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.834"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003559', 'Punto de Venta': '0109', 'N° de Factura': '88282259', 'Total a Pagar': '2.707,93', 'Fecha de Vencimiento': '06/10/2023', 'TIPOFB': '45', 'ORDEN': 30, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.849" endtime="20231123 11:00:18.850"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.850"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.850" level="INFO">${contadorROW2} = 31</msg>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.850"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.834" endtime="20231123 11:00:18.850"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003563', 'Punto de Venta': '0109', 'N° de Factura': '88282261', 'Total a Pagar': '73.770,34', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 31, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.850"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.850"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.850" level="INFO">${contadorROW2} = 32</msg>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.850"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.850"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003568', 'Punto de Venta': '0109', 'N° de Factura': '88282263', 'Total a Pagar': '164.552,45', 'Fecha de Vencimiento': '17/10/2023', 'TIPOFB': '45', 'ORDEN': 32, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.865" endtime="20231123 11:00:18.867"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.867"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.867" level="INFO">${contadorROW2} = 33</msg>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.867"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.850" endtime="20231123 11:00:18.867"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003574', 'Punto de Venta': '0109', 'N° de Factura': '88282268', 'Total a Pagar': '4.757,25', 'Fecha de Vencimiento': '04/10/2023', 'TIPOFB': '45', 'ORDEN': 33, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.867"/>
+</kw>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>G</arg>
+<arg>${contadorROW2}</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.867"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${contadorROW2}</var>
+<arg>${contadorROW2} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20231123 11:00:18.867" level="INFO">${contadorROW2} = 34</msg>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.867"/>
+</kw>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.867"/>
+</iter>
+<iter>
+<var name="${row2}">{'N° de Cuenta': '4003902', 'Punto de Venta': '0109', 'N° de Factura': '88283663', 'Total a Pagar': '3.823,20', 'Fecha de Vencimiento': '03/10/2023', 'TIPOFB': '45', 'ORDEN': 34, 'ESTADO': None}</var>
+<kw name="Set Cell Value" library="RPA.Excel.Files">
+<arg>${contadorROW2}</arg>
+<arg>F</arg>
+<arg>45</arg>
+<doc>Set a cell value in the given worksheet.</doc>
+<status status="PASS" starttime="20231123 11:00:18.867" endtime="20231123 11:00:18.884"/>
+</kw>
