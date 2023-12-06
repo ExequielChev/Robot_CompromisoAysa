@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.7 on win32)" generated="20231206 10:58:29.184" rpa="true" schemaversion="4">
+<suite id="s1" name="Tasks" source="C:\Users\zcheveste\Desktop\robot_estacionamiento\compromisoestacionamiento\tasks.robot">
+<test id="s1-t1" name="Open Major desktop application and play a app" line="21">
+<kw name="Open the Major.Exe desktop application">
+<kw name="RPA.Excel.Files.Open Workbook">
+<arg>${diccionario}</arg>
+<msg timestamp="20231206 10:58:29.213" level="FAIL">No keyword with name 'RPA.Excel.Files.Open Workbook' found.</msg>
+<status status="FAIL" starttime="20231206 10:58:29.213" endtime="20231206 10:58:29.213"/>
+</kw>
+<kw name="Get Cell Value">
+<var>${usuario}</var>
+<arg>5</arg>
+<arg>B</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.214" endtime="20231206 10:58:29.214"/>
+</kw>
+<kw name="Get Cell Value">
+<var>${contraseña}</var>
+<arg>6</arg>
+<arg>B</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.215" endtime="20231206 10:58:29.215"/>
+</kw>
+<kw name="Windows Run">
+<arg>Major.Exe</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.217" endtime="20231206 10:58:29.217"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231206 10:58:29.217" endtime="20231206 10:58:29.217"/>
+</kw>
+<kw name="RPA.Windows.Click">
+<arg>id:25</arg>
+<arg>timeout=60</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.218" endtime="20231206 10:58:29.218"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>40s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" starttime="20231206 10:58:29.218" endtime="20231206 10:58:29.218"/>
+</kw>
+<kw name="RPA.Windows.Click">
+<arg>id:6</arg>
+<arg>timeout=120</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.220" endtime="20231206 10:58:29.220"/>
+</kw>
+<kw name="Send Keys">
+<arg>keys=${usuario}</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.221" endtime="20231206 10:58:29.221"/>
+</kw>
+<kw name="RPA.Windows.Click">
+<arg>id:5</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.222" endtime="20231206 10:58:29.222"/>
+</kw>
+<kw name="Send Keys">
+<arg>keys=${contraseña}</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.224" endtime="20231206 10:58:29.224"/>
+</kw>
+<kw name="RPA.Windows.Click">
+<arg>id:4</arg>
+<status status="NOT RUN" starttime="20231206 10:58:29.225" endtime="20231206 10:58:29.225"/>
+</kw>
+<status status="FAIL" starttime="20231206 10:58:29.211" endtime="20231206 10:58:29.225"/>
+</kw>
+<kw name="Creacion de Carpetas">
+<status status="NOT RUN" starttime="20231206 10:58:29.225" endtime="20231206 10:58:29.225"/>
+</kw>
+<kw name="Ir a incio de usuario">
+<status status="NOT RUN" starttime="20231206 10:58:29.225" endtime="20231206 10:58:29.225"/>
+</kw>
+<kw name="Carga de datos">
+<status status="NOT RUN" starttime="20231206 10:58:29.225" endtime="20231206 10:58:29.225"/>
+</kw>
+<status status="FAIL" starttime="20231206 10:58:29.210" endtime="20231206 10:58:29.225">No keyword with name 'RPA.Excel.Files.Open Workbook' found.</status>
+</test>
+<status status="FAIL" starttime="20231206 10:58:29.185" endtime="20231206 10:58:29.225"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231206 10:58:29.199" level="ERROR">Error in file 'C:\Users\zcheveste\Desktop\robot_estacionamiento\compromisoestacionamiento\tasks.robot' on line 4: Importing library 'RPA.Windows' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\zcheveste\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\robot.exe
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\python311.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0
+  C:\Users\zcheveste\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\site-packages</msg>
+<msg timestamp="20231206 10:58:29.200" level="ERROR">Error in file 'C:\Users\zcheveste\Desktop\robot_estacionamiento\compromisoestacionamiento\tasks.robot' on line 5: Importing library 'RPA.Excel.Files' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\zcheveste\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\robot.exe
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\python311.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0
+  C:\Users\zcheveste\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\site-packages</msg>
+<msg timestamp="20231206 10:58:29.202" level="ERROR">Error in file 'C:\Users\zcheveste\Desktop\robot_estacionamiento\compromisoestacionamiento\tasks.robot' on line 6: Importing library 'RPA.Tables' failed: ModuleNotFoundError: No module named 'RPA'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\zcheveste\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Scripts\robot.exe
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\python311.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0
+  C:\Users\zcheveste\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2032.0_x64__qbz5n2kfra8p0\Lib\site-packages</msg>
+</errors>
+</robot>

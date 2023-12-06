@@ -7,23 +7,20 @@ Library    RPA.Tables
 Library    OperatingSystem
 Library    DateTime
 Library    String
+Library    RPA.Smartsheet
 
 *** Variables ***
-${PRIMER_NAME}=
-${SEGUNDO_NAME}=
-${excel_file} =    C:\\Users\\zcheveste\\Documents\\Robocop_project\\Robot_CompromisoAysa\\Excels\\MATRIZ CENTRAL.xlsx
-${excel_file2} =   C:\\Users\\zcheveste\\Documents\\Robocop_project\\OCR\\facturas\\Facturas de Aysa - Bot\\facturas_aysa.xlsx
-${sheet_name} =    SERVICIOS_PUBLICOS
-${sheet_name2} =    Facturas Aysa
+
+${diccionario} =    C:\\Users\\zcheveste\\Desktop\\robot_estacionamiento\\diccionario.xlsx
+${diccionario_hoja} =    dicci_hoja
 ${contador}    0
 ${value_to_write} =    OK
-${column_name} =    H
-${ruta_base}    C:\\Users\\zcheveste\\Documents
-${nombre_carpeta}    Compromisos_pdfAysa
+${column_name} =    Q
+${nombre_carpeta}    Compromisos_PdfEstacionamiento
 
 *** Tasks ***
 Open Major desktop application and play a app
-    # Open the Major.Exe desktop application 
+    #Open the Major.Exe desktop application 
     Creacion de Carpetas
     Ir a incio de usuario 
     Carga de datos
@@ -32,23 +29,32 @@ Open Major desktop application and play a app
 
 Open the Major.Exe desktop application
 
+    #Crear variables para los datos dentro del diccionario
+    RPA.Excel.Files.Open Workbook    ${diccionario}
+    ${usuario} =    Get Cell Value    5   B
+    ${contraseña} =    Get Cell Value    6    B
+
     ##Abrir el sistema Major (Windows + R)
     Windows Run    Major.Exe    
     Sleep    5s
     ##Seleccionar la ventana del Sistema Contabilidad
-    RPA.Windows.Click    id:25    timeout=30
+    RPA.Windows.Click    id:25    timeout=60
     Sleep    40s
     ##Clickear en la barra para escribir el Nombre del usuario
     RPA.Windows.Click    id:6    timeout=120
-    Send Keys    keys=${PRIMER_NAME}SCHEVE
+    Send Keys    keys=${usuario}
     ##Clickear en la barra para escribir la contraseña del usuario
     RPA.Windows.Click    id:5    
-    Send Keys    keys=${SEGUNDO_NAME}180718
+    Send Keys    keys=${contraseña}
     ## Aceptar el cartel para finalizar el ingreso del usuario al sistema
     RPA.Windows.Click    id:4
     # Sleep    15s
 
 Creacion de Carpetas
+
+    #Crear variables para los datos dentro del diccionario
+    RPA.Excel.Files.Open Workbook    ${diccionario}
+    ${descargas} =    Get Cell Value    2    B
 
     #Consigue los datos de la fecha por separado    
     ${fecha_hoy} =    Get Current Date
@@ -57,7 +63,7 @@ Creacion de Carpetas
     ${día} =    Convert Date    ${fecha_hoy}    %d
 
     # Ruta completa de la carpeta
-    ${ruta_año}    Set Variable    ${ruta_base}\\${año}
+    ${ruta_año}    Set Variable    ${descargas}\\${año}
     ${ruta_mes}    Set Variable    ${ruta_año}\\${mes}
     ${ruta_dia}    Set Variable    ${ruta_mes}\\${día}
     ${ruta_carpeta}    Set Variable    ${ruta_dia}\\${nombre_carpeta}
@@ -89,51 +95,67 @@ Ir a incio de usuario
     Sleep    5s
 
 Carga de datos 
+    #Crear variables para los datos dentro del diccionario
+    RPA.Excel.Files.Open Workbook    ${diccionario}
+    ${descargas} =    Get Cell Value    2    B
+    ${excel_matriz} =    Get Cell Value    3    B
+    ${matriz_hoja} =    Get Cell Value    4    B
+    ${usuario} =    Get Cell Value    5   B
+    ${contraseña} =    Get Cell Value    6    B
+    ${excel_factura}    Get Cell Value    7    B
+    ${factura_hoja}    Get Cell Value    8    B
+    ${observacion}     Get Cell Value    9    B
+    ${periodo}     Get Cell Value    10    B
+
     #Abre el excel SalesData y crea una lista con la cual trabajar
-    RPA.Excel.Files.Open Workbook    ${excel_file}
-    ${data_as_table} =    Read Worksheet As Table    ${sheet_name}    header=True
+    RPA.Excel.Files.Open Workbook    ${excel_matriz}
+    ${data_as_table} =    Read Worksheet As Table    ${matriz_hoja}    header=True
     @{cuenta} =    Create List  # Crear una lista vacía para almacenar los datos de las columnas
 
-    RPA.Excel.Files.Open Workbook    ${excel_file2}
+    RPA.Excel.Files.Open Workbook    ${excel_factura}
     #Abre el excel facturas_aysa y crea una lista con la cual trabajar
 
-    ${data_as_table2} =    Read Worksheet As Table    ${sheet_name2}    header=True
+    ${data_as_table2} =    Read Worksheet As Table    ${factura_hoja}    header=True
     @{n_cuenta2} =    Create List  # Crear una lista vacía para almacenar los datos de las columnas
 
     ${contadorROW2}    Set Variable    2  # Puedes ajustar el valor inicial según tus necesidades
-    Set Cell Value    1    F    TIPOFB
-    Set Cell Value    1    G    ORDEN
-    Set Cell Value    1    H    ESTADO
+    Set Cell Value    1    P    ORDEN
+    Set Cell Value    1    Q    COMPROMISO
+    Set Cell Value    1    M    factura
 
     FOR    ${row2}    IN    @{data_as_table2}
-        Set Cell Value    ${contadorROW2}    F    45
-        Set Cell Value    ${contadorROW2}    G    ${contadorROW2}
+        Set Cell Value    ${contadorROW2}    P    ${contadorROW2}
         ${contadorROW2}    Evaluate    ${contadorROW2} + 1
     END
-    ${data_as_table2} =    Read Worksheet As Table    ${sheet_name2}    header=True
+    ${data_as_table2} =    Read Worksheet As Table    ${factura_hoja}    header=True
+
     Save Workbook
 
-    # Filtra el excel por la columna de servicio, todos los que sean servicios de AGUA (AYSA)
-
-    ${filtered_data} =    Filter Table By Column    ${data_as_table}    SERVICIO    ==    AGUA
-    Log    ${filtered_data}
-
     FOR    ${row2}    IN    @{data_as_table2}
+    
             FOR    ${row}    IN    @{data_as_table}
-            ${estado} =    Set Variable    ${row2["ESTADO"]}
+
+            ${factura1}    Set Variable    ${row2["TIPO FACTURA"]}
+            ${factura1}    Convert To Integer    ${factura1}
+            ${celdavacia}    Get Cell Value    ${factura1}    K
+
+
+            IF    '${celdavacia}' != 'null'
+
+            ${compromiso} =    Set Variable    ${row2["COMPROMISO"]}
             #Iterar sobre las filas de la columna estado para saber si el compromiso ya fue cargado anteriormente o no, los compromisos cargados deberan tener escrito un "OK" en la columna "ESTADO"
             
-            IF    '${estado}' != 'OK'
+            IF    '${compromiso}' != 'OK'
             Log    Checking row con el estado
             ELSE
-                Continue For Loop If    '${estado}' == 'OK'
+                Continue For Loop If    '${compromiso}' == 'OK'
             Log    Skipping row with "OK"
             # Si encuentra un OK significa que el compromiso ya fue cargado, esto volvera a repetir el Loop hasta encontrar un compromiso sin cargar
             END
 
-                #Creacion de variables para los numeros de cuenta y luego relacionarlos entres si para obtener los datos correspondientes para la carga del compromiso
-                ${n_cuenta2} =    Set Variable    ${row2["N° de Cuenta"]}
-                ${cuenta} =    Set Variable    ${row["NUMERO_DE_CTA"]}
+                #Creacion de variables para los numeros de proveedor y luego relacionarlos entres si para obtener los datos correspondientes para la carga del compromiso
+                ${n_cuenta2} =    Set Variable    ${row2["NUMERO"]}
+                ${cuenta} =    Set Variable    ${row["NUMERO"]}
                 IF    '${n_cuenta2}'=='${cuenta}'
                 Log    datos coinciden : ${cuenta}
 
@@ -145,7 +167,7 @@ Carga de datos
                 Send keys    id:42    ${tipo}
 
                 #cargar el tipo de proveerdor, en caso de aysa (12)
-                ${provetipo} =    Set Variable    ${row["PROVE_TIPO"]}
+                ${provetipo} =    Set Variable    ${row["PROV TIPO"]}
                 Send Keys    id:40    ${provetipo}
 
                 #Cargar el numero del proveedor en caso de aysa (120196)
@@ -162,7 +184,7 @@ Carga de datos
                 Send Keys    keys={ENTER 2}
 
                 #Cargar la Est. programatica
-                ${programatica} =    Set Variable    ${row["EST.PROGRAMATICA"]}
+                ${programatica} =    Set Variable    ${row["CAT.PROG"]}
                 Send Keys    keys=${programatica}
                 Send Keys    keys={ENTER 2}
 
@@ -172,7 +194,7 @@ Carga de datos
                 Send Keys    keys={ENTER 2}
 
                 #Cargar el Objeto del gasto
-                ${objetogasto} =    Set Variable    ${row["OBJETO_DE_GASTO"]}
+                ${objetogasto} =    Set Variable    ${row["OG"]}
                 Send Keys    keys=${objetogasto}
                 Send Keys    keys={ENTER}
 
@@ -181,9 +203,10 @@ Carga de datos
                 Send Keys    keys={ENTER}
 
                 # cargar el importe 
-                ${importe} =    Set Variable    ${row2["Total a Pagar"]}
-                ${numero_sin_puntos} =    Set Variable    ${importe.replace('.', '')}
-                ${importe_final} =    Set Variable    ${numero_sin_puntos.replace(',', '.')}
+                ${importe} =    Set Variable    ${row2["IMPORTE FACTURA"]}
+                ${numero_sin_puntos}=    Convert To String    ${importe}
+                ${numero_sin_puntos}=    Set Variable    ${numero_sin_puntos.replace('.', '')}
+                ${importe_final}=    Set Variable    ${numero_sin_puntos.replace(',', '.')}
                 Send Keys    keys=${importe_final}
                 Send Keys    keys={ENTER}
                 Sleep    3s
@@ -208,7 +231,7 @@ Carga de datos
                 Sleep    0.5s
 
                 #cargar el nunero de oficina.
-                ${ofi} =    Set Variable    ${row["OFICI"]}
+                ${ofi} =    Set Variable    ${row["OFI"]}
                 Send Keys    keys=${ofi}
                 Send Keys    keys={ENTER}
                 Sleep    0.5s
@@ -217,7 +240,8 @@ Carga de datos
                 Send Keys    keys={RIGHT 8}
 
                 #Cargar la Descripcion.
-                Send Keys    keys=SERVICIO DE AGUA
+                ${servicio} =    Set Variable    ${row["SERVICIO"]}
+                Send Keys    keys=${servicio}
                 Send Keys    keys={ENTER}
 
                 #Cargar la Cantidad de productos.
@@ -273,9 +297,14 @@ Carga de datos
                 Sleep    0.5s
 
                 #Cargar los datos de las observaciones (en este caso sera el numero de cuenta y la direccion del mismo)
-                Send Keys    keys=NUMERO_DE_CUENTA:${cuenta} {ENTER}
-                ${dire}    Set Variable    ${row["DIRECCION"]}
-                Send Keys    keys=DIRECCION:${dire}
+                Send Keys    keys=${observacion}
+                Send Keys    keys={ENTER}
+                Send Keys    keys=${periodo}
+                Send Keys    keys={ENTER}
+                ${prove}    Set Variable    ${row["PROVEEDOR"]}
+                Send Keys    keys=${prove}
+                Send Keys    keys={ENTER}
+                Send Keys    keys=${numerotipo}
 
                 #Aceptar la edicion de la carga de las observaciones
                 RPA.Windows.Click    id:56    timeout=30
@@ -307,27 +336,26 @@ Carga de datos
 
                 #Borra el nombre que viene por defecto en el pdf el cual es "Crystal Reports"
                 RPA.Windows.Double Click    id:1148    timeout=160
+                Send Keys    keys={CTRL}{A}
                 Send Keys    keys={DEL}
-                RPA.Windows.Double Click    id:1148    timeout=30
-                Send Keys    keys={DEL}
-                Sleep    0.5s
+                # RPA.Windows.Double Click    id:1148    timeout=30
+                # Send Keys    keys={DEL}
+                # Sleep    0.5s
 
                 #Cargar el nombre del PDF y la ruta, en este caso le pondremos como nombre el numero de cuenta y un numero del cual es la iteracion por la que va 
                 ${contador} =    Convert To Integer    ${contador}
                 ${contador} =    Evaluate    ${contador} + 1
-                ${numero_de_cuenta} =    Set Variable    (${row["NUMERO_DE_CTA"]})
-                ${numero_de_cuenta} =    Convert To String    ${numero_de_cuenta}
-                ${numero_de_cuenta} =    Set Variable    ${numero_de_cuenta.replace('/', '_')}(${contador})
+                ${n_factura} =    Set Variable    (${row2["factura"]})
                 ${fecha_hoy} =    Get Current Date
                 ${año} =    Convert Date    ${fecha_hoy}    %Y
                 ${mes} =    Convert Date    ${fecha_hoy}    %m
                 ${día} =    Convert Date    ${fecha_hoy}    %d
                 # Ruta completa de la carpeta
-                ${ruta_año}    Set Variable    ${ruta_base}\\${año}
+                ${ruta_año}    Set Variable    ${descargas}\\${año}
                 ${ruta_mes}    Set Variable    ${ruta_año}\\${mes}
                 ${ruta_dia}    Set Variable    ${ruta_mes}\\${día}
 
-                Send Keys    keys=C:\\Users\\zcheveste\\Documents\\${año}\\${mes}\\${día}\\${nombre_carpeta}\\BOT_${numero_de_cuenta}.pdf
+                Send Keys    keys=C:\\Users\\zcheveste\\Documents\\${año}\\${mes}\\${día}\\${nombre_carpeta}\\BOT_${n_factura}.pdf
                 Sleep    3s
 
                 #Guardar archivo PDF
@@ -340,6 +368,7 @@ Carga de datos
                 #Esperamos 5 segundos para que se acomoden los ID del sistema y se vuelva a iterar el FOR 
                 Sleep    5s
 
+                END
                 END
             END
         END
